@@ -4,7 +4,7 @@ function showContent(company) {
 
     switch (company) {
         case 'car':
-            content = '<h2>뉴센스 모터스</h2><p>세계적인 브랜드 르노와의 협력을 통해 대한민국 5대 완성차 제조업체로 성장하고 있습니다.</p><p>뉴센스 모터스는 장인 정신으로 명차와 명품을 만듭니다...</p>';
+            content = '<h2>뉴센스 모터스</h2><p>세계적인 브랜드 르노의 인수를 통해 대한민국 5대 완성차 제조업체로 성장하고 있습니다.</p><p>뉴센스 모터스는 장인 정신으로 명차와 명품을 만듭니다...</p>';
             break;
         case 'broadcast':
             content = '<h2>뉴센스 브로드캐스트</h2><p>시청자를 이해하는 방송 프로그램을 제작합니다.</p>';
@@ -28,7 +28,7 @@ function showContent(company) {
             content = '<h2>뉴플릭스 / 뉴빙</h2><p>국내를 넘어 세계로 뻗어나가는 K-컨텐츠와 독점 컨텐츠를 제공합니다.</p>';
             break;
         default:
-            content = '<p>계열사를 선택해 주세요.</p>';
+            content = '<p></p>';
     }
 
     contentArea.innerHTML = content;
