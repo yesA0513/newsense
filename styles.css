@@ -1,0 +1,180 @@
+@font-face {
+    font-family: 'DOSGothic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DOSIyagiMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSIyagiMedium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DOSSaemmul';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSSaemmul.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(202, 205, 217);
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: rgb(35, 151, 128);
+    color: white;
+    padding: 15px;
+}
+
+.sidebar h2, .sidebar h3 {
+    color: black;
+    font-family: 'DOSGothic', sans-serif;
+}
+
+.sidebar p {
+    font-family: 'DOSSaemmul', sans-serif;
+    padding-bottom: 40px;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-list li {
+    margin: 10px 0;
+}
+
+button {
+    background-color: rgb(32, 95, 81);
+    font-family: 'DOSSaemmul', sans-serif;
+    font-size: 15px;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 50%;
+}
+
+button:hover {
+    background-color: #000e7a;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+#img-area img {
+    width: 500px;
+    height: auto;
+    margin-top: 20%;
+    margin-right: 5%;
+    margin-bottom: 20px;
+    float: right;
+    opacity: 0.7;
+    border-radius: 70px;
+}
+
+#welcome {
+    font-family: 'DOSIyagiMedium', sans-serif;
+    font-size: 40px;
+    margin-bottom: 70px;
+    font-weight: 400;
+}
+
+#greeting, #content-area {
+    font-family: 'DOSGothic', sans-serif;
+    font-size: 15px;
+    margin-bottom: 50px;
+}
+
+.footer {
+    font-family: 'DOSSaemmul', sans-serif;
+    margin-top: 40px;
+    margin-left: 20px;
+    text-align: left;
+    font-size: 12px;
+    color: #666;
+}
+
+/* 소원을 들어주는 돌 영역 추가 스타일 */
+.wish-stone {
+    width: 200px;
+    background-color: #5083cf;
+    padding: 15px;
+    margin-left: 20px;
+}
+
+.wish-stone h2 {
+    font-family: 'DOSGothic', sans-serif;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.stone-img {
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.5);
+}
+
+.wish-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.wish-form input, .wish-form textarea {
+    font-family: "DOSSaemmul", sans-serif;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.wish-form button {
+    background-color: #8cdbda;
+    color: black;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.wish-form button:hover {
+    background-color: #5a4eff;
+}
+
+.wish-list {
+    font-family: "DOSSaemmul", sans-serif;
+    margin-top: 10px;
+    max-height: 270px;
+    overflow-y: auto; /* 스크롤 가능 */
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+.wish-scroll {
+    display: flex;
+    flex-direction: column;
+}
+
+.wish-item {
+    background-color: #b2dfdb;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+

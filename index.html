@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주식회사 뉴센스</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>그룹 소개</h2>
+            <p>주식회사 뉴센스는 혁신적이고 창의적인 솔루션을 제공하는 선도적인 기업입니다.</p>
+            <h3>계열사</h3>
+            <ul class="nav-list">
+                <li><button onclick="showContent('car')">뉴센스 모터스</button></li>
+                <li><button onclick="showContent('broadcast')">뉴센스 브로드캐스트</button></li>
+                <li><button onclick="showContent('publishing')">뉴센스 출판</button></li>
+                <li><button onclick="showContent('book')">뉴센스 문고</button></li>
+                <li><button onclick="showContent('brand')">뉴센스 STANDARD</button></li>
+                <li><button onclick="showContent('wear')">뉴 신 사</button></li>
+                <li><button onclick="showContent('building')">뉴센스 Field</button></li>
+                <li><button onclick="showContent('media')">뉴플릭스 / 뉴빙</button></li>
+                <li><button onclick="goToMainPage()">메인 페이지로 가기</button></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1 id="welcome">주식회사 뉴센스에 오신 것을 환영합니다!</h1>
+            <p id="greeting">고객님, 저희 회사에 관심을 가져주셔서 감사합니다!</p>
+            <div id="content-area">
+                <h2>뉴센스는 장인정신으로 임합니다......</h2>
+                <p><- 궁금하신 내용을 클릭해 보세요~</p>
+            </div>
+            <div id="img-area">
+                <img src="logo.png" alt="뉴센스 로고">
+            </div>
+        </div>
+
+        <!-- 소원을 들어주는 돌 영역 -->
+        <div class="wish-stone">
+            <h2>소원의 돌 ~ ^^;</h2>
+            <img src="stone.png" alt="소원을 들어주는 돌" class="stone-img" onclick="alert('모두들,, 행복^^; 합시다!~')">
+            <div class="wish-form">
+                <input type="text" id="name" placeholder="이름을 입력하세요">
+                <textarea id="wish" placeholder="소원을 입력하세요"></textarea>
+                <button onclick="addWish()">소원 담기</button>
+            </div>
+            <div class="wish-list" id="wish-list">
+                <h3> 소 원 목 록</h3>
+                <div class="wish-scroll" id="wish-scroll">
+                    <!-- 소원 목록이 저장되는 부분 -->
+                     <div class="wish-item">
+                        <strong>당첨. 로또 기원하는, 1등</strong>
+                        : 오 신이시여. 로또 1등 당첨을 원합니다. 당신의 구원을 바란다. 오 지저스 크라이슬러 입니다. 아멘...
+                    </div>
+                    <div class="wish-item">
+                        <strong>뉴플@@ 티12~비</strong>
+                        : 뉴@센스2 에서 유1출된 미!공%&개 영상. 지금 바2로 유0튜@브#에서 확1인2. <a href="https://youtu.be/D2wVRWqYlf0">https://youtu.be/D2wVRWqYlf0</a>
+                    </div>
+                    <div class="wish-item">
+                        <strong>뉴센스,,,기업</strong>
+                        : 우리나라,, 최고의   기업.  뉴센스~~^^; 번창, 하시길~ ㅎㅎ;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 주식회사 뉴센스. 모든 권리 보유. 무단 복제시 법적 조치 취함.</p>
+    </div>
+</body>
+</html>
