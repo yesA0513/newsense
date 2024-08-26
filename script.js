@@ -4,7 +4,7 @@ function showContent(company) {
 
     switch (company) {
         case 'car':
-            content = '<h2>뉴센스 모터스</h2><p>세계적인 브랜드 르노의 인수를 통해 대한민국 5대 완성차 제조업체로 성장하고 있습니다.</p><p>뉴센스 모터스는 장인 정신으로 명차와 명품을 만듭니다...</p>';
+            content = '<h2>뉴센스 모터스</h2><p>세계적인 브랜드 르노와의 협력을 통해 대한민국 5대 완성차 제조업체로 성장하고 있습니다.</p><p>뉴센스 모터스는 장인 정신으로 명차와 명품을 만듭니다...</p>';
             break;
         case 'broadcast':
             content = '<h2>뉴센스 브로드캐스트</h2><p>시청자를 이해하는 방송 프로그램을 제작합니다.</p>';
@@ -28,30 +28,90 @@ function showContent(company) {
             content = '<h2>뉴플릭스 / 뉴빙</h2><p>국내를 넘어 세계로 뻗어나가는 K-컨텐츠와 독점 컨텐츠를 제공합니다.</p>';
             break;
         default:
-            content = '<p></p>';
+            content = '<p>계열사를 선택해 주세요.</p>';
     }
 
     contentArea.innerHTML = content;
 }
 
-function addWish() {
+// 소원의 돌
+const { createClient } = supabase;
+const supabaseUrl = 'https://uhnwatyeyjgvbzgpgcny.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVobndhdHlleWpndmJ6Z3BnY255Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQ3MDI5NDMsImV4cCI6MjA0MDI3ODk0M30.Dxoyl_bSad73ORtm9L8ccSmMfSbtQzDrMy0tixaL3DM';
+const _supabase = createClient(supabaseUrl, supabaseKey);
+
+async function addWish() {
     const name = document.getElementById('name').value;
     const wish = document.getElementById('wish').value;
-    const wishList = document.getElementById('wish-scroll');
 
     if (name && wish) {
-        const wishItem = document.createElement('div');
-        wishItem.className = 'wish-item';
-        wishItem.innerHTML = `<strong>${name}</strong>: ${wish}`;
-        wishList.appendChild(wishItem);
+        try {
+            const { data, error } = await _supabase
+                .from('wishes')
+                .insert([{ name, wish }]);
 
-        // 입력 필드 초기화
-        document.getElementById('name').value = '';
-        document.getElementById('wish').value = '';
+            if (error) throw error;
+
+            // 입력 필드 초기화
+            document.getElementById('name').value = '';
+            document.getElementById('wish').value = '';
+        } catch (error) {
+            console.error('Error adding wish:', error);
+            alert('소원을 추가하는 중 오류가 발생했습니다.');
+        }
     } else {
         alert("이름과 소원을 입력해 주세요.");
     }
 }
+
+function renderWishItem(wish) {
+    const wishList = document.getElementById('wish-scroll');
+    const wishItem = document.createElement('div');
+    wishItem.className = 'wish-item';
+    wishItem.innerHTML = `<strong>${wish.name}</strong>: ${wish.wish}`;
+    wishList.prepend(wishItem);
+}
+
+// 초기 소원 목록 로드
+async function loadWishes() {
+    try {
+        const { data, error } = await _supabase
+            .from('wishes')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        data.forEach(renderWishItem);
+    } catch (error) {
+        console.error('Error loading wishes:', error);
+    }
+}
+
+// 소원 목록 실시간 업데이트
+function subscribeToWishes() {
+    _supabase
+        .channel('db-changes')
+        .on(
+            'postgres_changes',
+            {
+                event: 'INSERT',
+                schema: 'public',
+                table: 'wishes'
+            },
+            (payload) => {
+                console.log('New wish received:', payload.new);
+                renderWishItem(payload.new);
+            })
+        .subscribe((status) => {
+            console.log('Subscription status:', status);
+        });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadWishes();
+    subscribeToWishes();
+});
 
 // 메인 페이지로 가는 함수
 function goToMainPage() {
