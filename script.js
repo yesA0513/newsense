@@ -34,6 +34,14 @@ function showContent(company) {
     contentArea.innerHTML = content;
 }
 
+//모달 공지
+const modal = document.querySelector('.modal');
+const modalClose = document.querySelector('.modal_close');
+
+modalClose.addEventListener('click', () => {
+  modal.style.display='none';
+});
+
 // 소원의 돌
 const { createClient } = supabase;
 const supabaseUrl = 'https://uhnwatyeyjgvbzgpgcny.supabase.co';
