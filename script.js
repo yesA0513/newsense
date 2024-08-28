@@ -42,6 +42,13 @@ modalClose.addEventListener('click', () => {
   modal.style.display='none';
 });
 
+const modal2 = document.querySelector('.modal2');
+const modalClose2 = document.querySelector('.modal_close2');
+
+modalClose2.addEventListener('click', () => {
+  modal2.style.display='none';
+});
+
 // 소원의 돌
 const { createClient } = supabase;
 const supabaseUrl = 'https://uhnwatyeyjgvbzgpgcny.supabase.co';
